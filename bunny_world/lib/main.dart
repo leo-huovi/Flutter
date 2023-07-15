@@ -112,10 +112,16 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Image.asset(
-              'assets/images/bunny.jpg', // Replace 'image_name.png' with your actual image file name
-              width: 300, // Adjust the width as per your requirement
-              height: 400, // Adjust the height as per your requirement
+            GestureDetector(
+              onTap: () {
+                // Call the incrementCounter function here
+                _incrementCounter();
+              },
+              child: Image.asset(
+                'assets/images/bunny.jpg', // Replace 'image_name.png' with your actual image file name
+                width: 300, // Adjust the width as per your requirement
+                height: 400, // Adjust the height as per your requirement
+              ),
             ),
           ],
         ),
