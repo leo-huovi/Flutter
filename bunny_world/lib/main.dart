@@ -106,19 +106,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You have pushed this bunny this many times:',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Image.asset(
+              'assets/images/bunny.jpg', // Replace 'image_name.png' with your actual image file name
+              width: 300, // Adjust the width as per your requirement
+              height: 400, // Adjust the height as per your requirement
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        tooltip: 'Bunny',
+        child: const Icon(Icons.cruelty_free),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
