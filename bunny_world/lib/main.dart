@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:soundpool/soundpool.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Bunny Page'),
     );
   }
 }
@@ -56,6 +58,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final AudioPlayer _audioCache = AudioPlayer();
 
   void _incrementCounter() {
     setState(() {
@@ -66,6 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  void _playClickSound() {
+    _audioCache.play(AssetSource(
+        'sounds/yippee.mp3')); // Replace with your actual sound file path
   }
 
   @override
@@ -106,18 +114,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed this bunny this many times:',
+              'You have pushed a bunny this many times:',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            InkWell(
+            InkResponse(
               onTap: () {
                 // Call the incrementCounter function here
                 _incrementCounter();
-                // _playClickSound();
+                _playClickSound();
               },
+              splashColor: const Color.fromARGB(
+                  147, 240, 213, 211), // Set the color of the splash (ripple)
+              highlightColor: const Color.fromARGB(
+                  63, 217, 203, 219), // Set the color when the tap is held down
+              borderRadius:
+                  BorderRadius.circular(50.0), // Set the shape of the ripple
               child: Image.asset(
                 'assets/images/bunny.jpg', // Replace 'image_name.png' with your actual image file name
                 width: 300, // Adjust the width as per your requirement
