@@ -60,6 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   final AudioPlayer _audioCache = AudioPlayer();
 
+  Soundpool pool = Soundpool(streamType: StreamType.notification)
+  int soundId = await rootBundle.load("assets/sounds/yippee.mp3")
+  .then((Bytedata sounddata) {return pool.load(soundData);
+  });
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -124,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 // Call the incrementCounter function here
                 _incrementCounter();
-                _playClickSound();
+                poolplay(soundId)
+                // _playClickSound();
               },
               splashColor: const Color.fromARGB(
                   147, 240, 213, 211), // Set the color of the splash (ripple)
